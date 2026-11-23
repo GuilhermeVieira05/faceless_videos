@@ -1,0 +1,5 @@
+{
+  "_ajuda": "Troca palavras SÓ no áudio (a legenda não muda). Chave = como está no roteiro, valor = como a voz deve ler. Ignora maiúsculas/minúsculas.",
+  "backend": "béquend",
+  "retry": "ritrái"
+}

@@ -1,0 +1,5 @@
+{
+  "_ajuda": "Voz e velocidade padrão. Opções pt-BR: pt-BR-AntonioNeural (grave), pt-BR-FranciscaNeural (feminina), pt-BR-ThalitaMultilingualNeural (feminina, lê melhor palavras em inglês). Velocidade: ex. \"+10%\".",
+  "voice": "pt-BR-AntonioNeural",
+  "rate": "+0%"
+}

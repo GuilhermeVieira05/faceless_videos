@@ -18,6 +18,7 @@ se o canal crescer, vale trocar por uma voz paga/licenciada ou pela sua própria
 import argparse
 import asyncio
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -26,7 +27,25 @@ try:
 except ImportError:
     sys.exit("Instale a dependência primeiro:  pip install edge-tts")
 
-DEFAULT_VOICE = "pt-BR-AntonioNeural"
+HERE = Path(__file__).resolve().parent
+
+
+def load_json(name: str) -> dict:
+    f = HERE / name
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
+CONFIG = load_json("voz.json")
+DEFAULT_VOICE = CONFIG.get("voice", "pt-BR-AntonioNeural")
+DEFAULT_RATE = CONFIG.get("rate", "+0%")
+PRONUNCIA = {k: v for k, v in load_json("pronuncia.json").items() if not k.startswith("_")}
+
+
+def aplicar_pronuncia(text: str) -> str:
+    """Troca palavras só no texto falado, usando scripts/pronuncia.json."""
+    for palavra, fala in PRONUNCIA.items():
+        text = re.sub(rf"(?<![\w-]){re.escape(palavra)}(?![\w-])", fala, text, flags=re.IGNORECASE)
+    return text
 
 
 async def synth(text: str, voice: str, rate: str, out: Path) -> None:
@@ -39,7 +58,7 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Gera narração por cena com edge-tts")
     parser.add_argument("script", help="caminho do roteiro .json")
     parser.add_argument("--voice", default=DEFAULT_VOICE)
-    parser.add_argument("--rate", default="+0%", help='velocidade, ex.: "+10%%"')
+    parser.add_argument("--rate", default=DEFAULT_RATE, help='velocidade, ex.: "+10%%"')
     parser.add_argument("--force", action="store_true", help="regera mesmo se o mp3 já existir")
     args = parser.parse_args()
 
@@ -52,12 +71,17 @@ async def main() -> None:
         if not text:
             continue
         out = out_dir / f"scene-{i}.mp3"
-        if out.exists() and not args.force:
-            print(f"cena {i + 1}: já existe, pulando (use --force para regerar)")
-            continue
         voice = scene.get("voice") or script.get("voice") or args.voice
+        spoken = aplicar_pronuncia(text)
+        stamp = out.with_suffix(".txt")
+        signature = f"{voice}|{args.rate}|{spoken}"
+        unchanged = stamp.exists() and stamp.read_text(encoding="utf-8") == signature
+        if out.exists() and unchanged and not args.force:
+            print(f"cena {i + 1}: sem mudanças, pulando (use --force para regerar)")
+            continue
         print(f"cena {i + 1}: {voice}")
-        await synth(text, voice, args.rate, out)
+        await synth(spoken, voice, args.rate, out)
+        stamp.write_text(signature, encoding="utf-8")
 
     print(f"Pronto: {out_dir}")
 
