@@ -1,0 +1,68 @@
+{
+	"id": "observer-003",
+	"niche": "programacao",
+	"title": "Padrão de projeto Observer",
+	"revisar": "Troque Order/emailService por um caso real seu (notificação, evento de domínio, WebSocket). Se você já refatorou um código acoplado assim, conte isso no hook.",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "Padrões de projeto",
+			"title": "Seu código chama *tudo* na mão?",
+			"subtitle": "Observer, em 30 segundos.",
+			"narration": "Todo pedido pago dispara e-mail, estoque e analytics, e a classe Order chama tudo na mão? Tem um padrão de projeto pra isso: o Observer."
+		},
+		{
+			"type": "code",
+			"label": "Acoplado",
+			"tone": "bad",
+			"filename": "order.ts",
+			"code": "pay() {\n  this.status = 'paid';\n  emailService.send(this);\n  stockService.update(this);\n  analytics.track(this);\n}",
+			"highlight": [
+				3,
+				4,
+				5
+			],
+			"narration": "Aqui a Order conhece e chama cada serviço. Pra adicionar um novo, você precisa mexer na Order. E ela passa a depender de todo mundo."
+		},
+		{
+			"type": "code",
+			"label": "Observer",
+			"tone": "good",
+			"filename": "order.ts",
+			"code": "pay() {\n  this.status = 'paid';\n  this.notify();\n}",
+			"highlight": [
+				3
+			],
+			"narration": "Com o Observer, a Order só avisa que mudou. Ela não sabe quem está ouvindo."
+		},
+		{
+			"type": "code",
+			"label": "Inscrição",
+			"tone": "neutral",
+			"filename": "app.ts",
+			"code": "order.subscribe(emailService);\norder.subscribe(stockService);\norder.subscribe(analytics);",
+			"highlight": [
+				1,
+				2,
+				3
+			],
+			"narration": "Quem quer saber do pagamento se inscreve. Um serviço novo entra sem mudar uma linha da Order."
+		},
+		{
+			"type": "bullets",
+			"title": "Você já *usa* isso",
+			"points": [
+				"addEventListener no navegador",
+				"EventEmitter no Node.js",
+				"Observables (RxJS, Angular)"
+			],
+			"narration": "Você já usa Observer todo dia. O addEventListener no navegador, o EventEmitter no Node, e os Observables do RxJS e do Angular."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais *padrões de projeto*",
+			"subtitle": "Um padrão por semana.",
+			"narration": "Segue pra mais padrões de projeto."
+		}
+	]
+}

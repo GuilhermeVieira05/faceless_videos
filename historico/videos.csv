@@ -1,8 +1,8 @@
 id,nicho,tema,criado_em,status,postado_em,plataformas,link,views_7d,retencao,seguidores_ganhos,notas
 ts-any-001,programacao,Para de usar any no TypeScript,2026-11-23,render de teste (sem voz),,,,,,,Primeiro vídeo de teste do projeto
 js-promise-all-002,programacao,await em sequência vs Promise.all,2026-11-23,roteiro pronto,,,,,,,
-ng-destroy-003,programacao,subscribe sem cancelar no Angular,2026-11-23,roteiro pronto,,,,,,,Trocar por observable real e história própria
-bullmq-idempotente-004,programacao,Job de fila precisa ser idempotente,2026-11-23,roteiro pronto,,,,,,,Trocar por caso real do trabalho
+observer-003,programacao,Padrão de projeto Observer,2026-11-23,roteiro pronto,,,,,,,Trocar por caso real seu
+idempotencia-filas-004,programacao,Idempotência em filas,2026-11-23,roteiro pronto,,,,,,,Trocar por caso real seu
 ts-nullish-005,programacao,|| x ?? no TypeScript,2026-11-23,roteiro pronto,,,,,,,
 en-i-agree-001,ingles,I am agree x I agree,2026-11-23,roteiro pronto,,,,,,,Revisar frases no dicionário
 en-looking-forward-002,ingles,Estou ansioso: looking forward to,2026-11-23,roteiro pronto,,,,,,,Revisar frases no dicionário
