@@ -25,8 +25,8 @@ Se o Remotion não achar um navegador, aponte o Chrome: `REMOTION_BROWSER="/cami
 
 1. Gere o roteiro com IA usando o prompt de `prompts/<nicho>.md` e salve em `content/<nicho>/NNN-nome.json`.
 2. **Revise** (código roda? inglês está certo? troque um exemplo por algo seu). Essa etapa é o que deixa o canal com cara de autor e não de conteúdo em massa.
-3. Narração (opcional): `pip install edge-tts` e `python3 scripts/tts.py <roteiro>`. Sem áudio, o vídeo usa duração estimada e legendas; com áudio, cada cena ajusta a duração ao mp3.
-4. `npm run render -- <roteiro>` e poste. Dá para agendar no TikTok e no YouTube Shorts.
+3. Voz + vídeo em um comando: `npm run make -- <roteiro>`. Na primeira vez ele cria o `.venv` e instala o edge-tts sozinho; depois gera um mp3 por cena e renderiza o mp4 em `out/`. Com `--no-voice` ele renderiza só com legenda. (Os passos separados continuam existindo: `python3 scripts/tts.py <roteiro>` e `npm run render -- <roteiro>`.)
+4. Poste. Dá para agendar no TikTok e no YouTube Shorts.
 
 Roteiros de uma mesma semana podem ser feitos em lote numa noite só.
 

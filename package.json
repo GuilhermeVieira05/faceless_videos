@@ -7,7 +7,8 @@
     "studio": "remotion studio src/index.ts",
     "render": "tsx scripts/render.ts",
     "tts": "python3 scripts/tts.py",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "make": "tsx scripts/make.ts"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.380",
