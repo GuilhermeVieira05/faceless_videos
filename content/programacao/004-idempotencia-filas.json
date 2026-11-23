@@ -2,14 +2,14 @@
 	"id": "idempotencia-filas-004",
 	"niche": "programacao",
 	"title": "Idempotência em filas",
-	"revisar": "Troque charge/seen por um caso real seu (e-mail duplicado, cobrança, webhook). Se você já viu mensagem duplicada em produção, conte isso no hook.",
+	"revisar": "Troque charge/seen por um caso real seu (e-mail duplicado, cobrança, webhook). A abertura já usa o seu caso de job travado, sem citar a empresa.",
 	"scenes": [
 		{
 			"type": "hook",
 			"tag": "Filas e mensageria",
-			"title": "Sua mensagem pode ser processada *duas vezes*",
-			"subtitle": "Seu código aguenta isso?",
-			"narration": "A maioria das filas entrega a mensagem pelo menos uma vez. Isso significa que ela pode chegar duas. Seu código aguenta isso?"
+			"title": "O job *travou* e rodou de novo?",
+			"subtitle": "O clássico das filas.",
+			"narration": "Já vi job travado acontecer direto. A fila acha que o job morreu e manda de novo, e ele roda duas vezes. Seu código aguenta isso?"
 		},
 		{
 			"type": "code",
@@ -17,8 +17,10 @@
 			"tone": "bad",
 			"filename": "consumer.ts",
 			"code": "async function handle(msg) {\n  await charge(msg.orderId);\n}",
-			"highlight": [2],
-			"narration": "Com retry ou falha de rede, a mesma mensagem pode chegar de novo. Aqui, o cliente seria cobrado duas vezes."
+			"highlight": [
+				2
+			],
+			"narration": "Com retry, job travado ou falha de rede, a mesma mensagem pode chegar de novo. Aqui, o cliente seria cobrado duas vezes."
 		},
 		{
 			"type": "code",
@@ -26,13 +28,21 @@
 			"tone": "good",
 			"filename": "consumer.ts",
 			"code": "async function handle(msg) {\n  if (await seen(msg.id)) {\n    return;\n  }\n  await charge(msg.orderId);\n  await markSeen(msg.id);\n}",
-			"highlight": [2, 3, 4],
+			"highlight": [
+				2,
+				3,
+				4
+			],
 			"narration": "Antes de processar, confere se esse id de mensagem já foi visto. Se já foi, ignora. Assim, receber duas vezes dá o mesmo resultado que receber uma. Isso é idempotência."
 		},
 		{
 			"type": "bullets",
 			"title": "Pra ficar *ainda mais seguro*",
-			"points": ["Chave de idempotência na operação", "Constraint única no banco", "Teste com a mesma mensagem 2 vezes"],
+			"points": [
+				"Chave de idempotência na operação",
+				"Constraint única no banco",
+				"Teste com a mesma mensagem 2 vezes"
+			],
 			"narration": "Ainda existe uma janela entre processar e registrar. O ideal é usar também uma chave de idempotência na operação, ou uma constraint única no banco. E teste o seu consumidor recebendo a mesma mensagem duas vezes."
 		},
 		{
