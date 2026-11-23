@@ -1,0 +1,41 @@
+{
+	"id": "en-i-agree-001",
+	"niche": "ingles",
+	"title": "I am agree ou I agree?",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "Inglês do dia",
+			"title": "Você ainda fala *\"I am agree\"*?",
+			"subtitle": "Esse erro é muito comum.",
+			"narration": "Você ainda fala I am agree? Esse erro é muito comum entre brasileiros."
+		},
+		{
+			"type": "wrongRight",
+			"wrong": "I am agree",
+			"right": "I agree",
+			"note": "*Agree* já é verbo. Não precisa do \"am\".",
+			"narration": "Em inglês, agree já é um verbo. Então você não usa o verbo to be. Só diz: I agree."
+		},
+		{
+			"type": "phrase",
+			"pt": "Eu concordo com você",
+			"en": "I agree with you",
+			"pronunciation": "ai a-GRI uíz iú",
+			"narration": "Pra dizer: eu concordo com você, fale: I agree with you."
+		},
+		{
+			"type": "example",
+			"label": "Exemplo",
+			"en": "I *agree* with your idea.",
+			"pt": "Eu concordo com a sua ideia.",
+			"narration": "Por exemplo: I agree with your idea."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais *inglês* todo dia",
+			"subtitle": "Uma dica rápida por dia.",
+			"narration": "Segue pra aprender mais inglês todo dia."
+		}
+	]
+}

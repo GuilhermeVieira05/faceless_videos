@@ -1,0 +1,41 @@
+{
+	"id": "en-looking-forward-002",
+	"niche": "ingles",
+	"title": "Estou ansioso: I'm anxious?",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "Inglês do dia",
+			"title": "\"Estou *ansioso* pela viagem\" em inglês",
+			"subtitle": "Cuidado com a tradução literal.",
+			"narration": "Como dizer: estou ansioso pela viagem, em inglês? Cuidado com a tradução literal."
+		},
+		{
+			"type": "wrongRight",
+			"wrong": "I'm anxious for the trip",
+			"right": "I'm looking forward to the trip",
+			"note": "*Anxious* costuma soar como \"nervoso, preocupado\".",
+			"narration": "Anxious costuma soar como nervoso ou preocupado. Pra dizer que você está empolgado esperando algo, use: looking forward to."
+		},
+		{
+			"type": "phrase",
+			"pt": "Estou ansioso por isso",
+			"en": "I'm looking forward to it",
+			"pronunciation": "aim LU-quin FÓR-uârd tu it",
+			"narration": "Estou ansioso por isso: I'm looking forward to it."
+		},
+		{
+			"type": "example",
+			"label": "Exemplo",
+			"en": "I'm *looking forward to* the weekend.",
+			"pt": "Estou ansioso pelo fim de semana.",
+			"narration": "Por exemplo: I'm looking forward to the weekend."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais *inglês* todo dia",
+			"subtitle": "Uma dica rápida por dia.",
+			"narration": "Segue pra aprender mais inglês todo dia."
+		}
+	]
+}

@@ -1,0 +1,44 @@
+{
+	"id": "ts-any-001",
+	"niche": "programacao",
+	"title": "Para de usar any no TypeScript",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "TypeScript",
+			"title": "Você usa *any* e nem percebe o problema",
+			"subtitle": "Em 30 segundos você entende.",
+			"narration": "Se você usa any no TypeScript, você está desligando o próprio TypeScript."
+		},
+		{
+			"type": "code",
+			"label": "Errado",
+			"tone": "bad",
+			"filename": "user.ts",
+			"code": "function getName(user: any) {\n  return user.name.toUpperCase();\n}\n\ngetName(undefined);",
+			"highlight": [1, 5],
+			"narration": "Com any, o compilador não reclama de nada. Esse código compila normalmente, e só quebra em produção."
+		},
+		{
+			"type": "code",
+			"label": "Certo",
+			"tone": "good",
+			"filename": "user.ts",
+			"code": "interface User {\n  name: string;\n}\n\nfunction getName(user: User) {\n  return user.name.toUpperCase();\n}",
+			"highlight": [5],
+			"narration": "Tipando o parâmetro, o erro aparece na hora que você escreve, e não na hora que o usuário usa."
+		},
+		{
+			"type": "bullets",
+			"title": "Precisa de *flexibilidade*?",
+			"points": ["Use *unknown* e faça a checagem", "Use *generics*", "any só como exceção"],
+			"narration": "Se precisar de flexibilidade, use unknown ou generics. O any tem que ser exceção, não atalho."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais dicas de *TypeScript*",
+			"subtitle": "Uma dica por dia.",
+			"narration": "Segue pra mais dicas de TypeScript."
+		}
+	]
+}
