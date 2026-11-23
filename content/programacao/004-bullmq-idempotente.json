@@ -1,0 +1,45 @@
+{
+	"id": "bullmq-idempotente-004",
+	"niche": "programacao",
+	"title": "Job de fila precisa ser idempotente",
+	"revisar": "Troque charge/isPaid por um caso real que você já tratou (e-mail duplicado, cobrança, webhook). Se tiver uma história de job que rodou duas vezes, conte no hook.",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "NestJS + BullMQ",
+			"title": "Seu job pode rodar *duas vezes*",
+			"subtitle": "Já pensou no que acontece?",
+			"narration": "Seu job de fila pode rodar duas vezes. Você já pensou no que acontece se ele cobrar um cliente?"
+		},
+		{
+			"type": "code",
+			"label": "Perigoso",
+			"tone": "bad",
+			"filename": "charge.processor.ts",
+			"code": "async process(job: Job) {\n  await this.charge(job.data.id);\n}",
+			"highlight": [2],
+			"narration": "Com retry, ou com um job travado que volta pra fila, o mesmo job pode ser processado mais de uma vez. Aqui, o cliente seria cobrado duas vezes."
+		},
+		{
+			"type": "code",
+			"label": "Mais seguro",
+			"tone": "good",
+			"filename": "charge.processor.ts",
+			"code": "async process(job: Job) {\n  const { id } = job.data;\n  if (await this.isPaid(id)) {\n    return;\n  }\n  await this.charge(id);\n}",
+			"highlight": [3, 4, 5],
+			"narration": "Antes de cobrar, verifica se já foi cobrado. Isso deixa o job idempotente: rodar duas vezes dá o mesmo resultado que rodar uma."
+		},
+		{
+			"type": "bullets",
+			"title": "Pra ficar *ainda mais seguro*",
+			"points": ["Chave de idempotência no pagamento", "Constraint única no banco", "Teste rodando o job 2 vezes"],
+			"narration": "Ainda existe uma janela entre verificar e cobrar. Por isso o ideal é usar também uma chave de idempotência no pagamento, ou uma constraint única no banco. E teste o seu job rodando duas vezes."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais dicas de *backend*",
+			"subtitle": "Uma dica por dia.",
+			"narration": "Segue pra mais dicas de backend."
+		}
+	]
+}

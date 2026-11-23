@@ -1,0 +1,42 @@
+{
+	"id": "en-actually-004",
+	"niche": "ingles",
+	"title": "Actually não é atualmente",
+	"revisar": "Confira as frases num dicionário e ajuste a pronúncia do seu jeito. Se você já foi pego por esse falso cognato, conte no hook.",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "Falso cognato",
+			"title": "*Actually* NÃO é atualmente",
+			"subtitle": "Esse falso amigo engana muita gente.",
+			"narration": "Actually não significa atualmente. Esse falso amigo engana muita gente."
+		},
+		{
+			"type": "wrongRight",
+			"wrong": "Actually, I work at a bank",
+			"right": "Currently, I work at a bank",
+			"note": "*Actually* = na verdade. *Currently* = atualmente.",
+			"narration": "Actually quer dizer na verdade. Pra dizer atualmente, use currently."
+		},
+		{
+			"type": "phrase",
+			"pt": "Na verdade, eu não sei",
+			"en": "Actually, I don't know",
+			"pronunciation": "ÉK-chu-a-li, ai dôunt nôu",
+			"narration": "Na verdade, eu não sei: Actually, I don't know."
+		},
+		{
+			"type": "example",
+			"label": "Exemplo",
+			"en": "*Actually*, I prefer tea.",
+			"pt": "Na verdade, eu prefiro chá.",
+			"narration": "Por exemplo: Actually, I prefer tea."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais *inglês* todo dia",
+			"subtitle": "Uma dica rápida por dia.",
+			"narration": "Segue pra aprender mais inglês todo dia."
+		}
+	]
+}

@@ -1,0 +1,42 @@
+{
+	"id": "en-explain-to-me-005",
+	"niche": "ingles",
+	"title": "Explain me x Explain to me",
+	"revisar": "Confira as frases num dicionário e ajuste a pronúncia do seu jeito. Troque o exemplo final por uma frase de reunião que você realmente usaria.",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "Inglês no trabalho",
+			"title": "\"Pode me *explicar*?\" em inglês",
+			"subtitle": "Cuidado com o \"me\" no lugar errado.",
+			"narration": "Como pedir pra alguém te explicar algo em inglês sem cometer um erro muito comum?"
+		},
+		{
+			"type": "wrongRight",
+			"wrong": "Can you explain me this?",
+			"right": "Can you explain this to me?",
+			"note": "Depois de *explain*, a pessoa vem com *to*.",
+			"narration": "O verbo explain não aceita a pessoa logo depois. Primeiro vem o que será explicado, e depois to me."
+		},
+		{
+			"type": "phrase",
+			"pt": "Você pode me explicar isso?",
+			"en": "Can you explain this to me?",
+			"pronunciation": "kén iú ik-SPLEIN dis tu mi",
+			"narration": "Você pode me explicar isso? Can you explain this to me?"
+		},
+		{
+			"type": "example",
+			"label": "Exemplo",
+			"en": "Could you *explain* the process to me?",
+			"pt": "Você poderia me explicar o processo?",
+			"narration": "Por exemplo: Could you explain the process to me?"
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais *inglês* todo dia",
+			"subtitle": "Uma dica rápida por dia.",
+			"narration": "Segue pra aprender mais inglês todo dia."
+		}
+	]
+}

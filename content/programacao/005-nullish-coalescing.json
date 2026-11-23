@@ -1,0 +1,45 @@
+{
+	"id": "ts-nullish-005",
+	"niche": "programacao",
+	"title": "|| x ?? no TypeScript",
+	"revisar": "Troque retries/opts por um caso do seu código (timeout, limite, porta, desconto) onde o zero era um valor válido.",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "TypeScript",
+			"title": "Esse *||* esconde um bug",
+			"subtitle": "Quase todo mundo já escreveu.",
+			"narration": "Esse operador de duas barras verticais esconde um bug que quase todo mundo já escreveu."
+		},
+		{
+			"type": "code",
+			"label": "Bug",
+			"tone": "bad",
+			"filename": "config.ts",
+			"code": "const retries = opts.retries || 3;\n\n// opts = { retries: 0 }\n// retries vale 3",
+			"highlight": [1, 4],
+			"narration": "Se a pessoa passa zero, o ou lógico trata o zero como falso e troca por três. Só que o zero era um valor válido."
+		},
+		{
+			"type": "code",
+			"label": "Certo",
+			"tone": "good",
+			"filename": "config.ts",
+			"code": "const retries = opts.retries ?? 3;\n\n// opts = { retries: 0 }\n// retries vale 0",
+			"highlight": [1, 4],
+			"narration": "Com dois pontos de interrogação, só null e undefined caem no valor padrão. O zero fica."
+		},
+		{
+			"type": "bullets",
+			"title": "Quando usar *cada um*",
+			"points": ["?? : só null e undefined", "|| : qualquer valor falso", "0, '' e false são falsos"],
+			"narration": "Use o ponto de interrogação duplo quando só null e undefined significam ausência. Use o ou lógico quando qualquer valor falso, como zero ou string vazia, deve cair no padrão."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais dicas de *TypeScript*",
+			"subtitle": "Uma dica por dia.",
+			"narration": "Segue pra mais dicas de TypeScript."
+		}
+	]
+}
