@@ -36,6 +36,8 @@ Roteiros de uma mesma semana podem ser feitos em lote numa noite só.
 content/<nicho>/*.json     roteiros (um vídeo por arquivo)
 prompts/                   prompts para gerar roteiros com IA
 historico/                 registro dos vídeos feitos e das métricas (videos.csv)
+pesquisa/                  pesquisas de referências do nicho (o que está funcionando)
+.claude/                   agente "estrategista" e skills: pesquisa-nicho, roteiro, analise-posts
 public/fonts, public/audio fontes empacotadas e narração gerada
 scripts/render.ts          CLI de render
 scripts/tts.py             narração por cena
