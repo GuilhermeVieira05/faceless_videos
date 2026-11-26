@@ -38,6 +38,7 @@ def load_json(name: str) -> dict:
 CONFIG = load_json("voz.json")
 DEFAULT_VOICE = CONFIG.get("voice", "pt-BR-AntonioNeural")
 DEFAULT_RATE = CONFIG.get("rate", "+0%")
+DEFAULT_PITCH = CONFIG.get("pitch", "+0Hz")
 PRONUNCIA = {k: v for k, v in load_json("pronuncia.json").items() if not k.startswith("_")}
 
 
@@ -48,9 +49,9 @@ def aplicar_pronuncia(text: str) -> str:
     return text
 
 
-async def synth(text: str, voice: str, rate: str, out: Path) -> None:
+async def synth(text: str, voice: str, rate: str, pitch: str, out: Path) -> None:
     tmp = out.with_suffix(".tmp.mp3")
-    await edge_tts.Communicate(text, voice, rate=rate).save(str(tmp))
+    await edge_tts.Communicate(text, voice, rate=rate, pitch=pitch).save(str(tmp))
     tmp.rename(out)  # só aparece com o nome final quando terminou de gravar
 
 
@@ -59,6 +60,7 @@ async def main() -> None:
     parser.add_argument("script", help="caminho do roteiro .json")
     parser.add_argument("--voice", default=DEFAULT_VOICE)
     parser.add_argument("--rate", default=DEFAULT_RATE, help='velocidade, ex.: "+10%%"')
+    parser.add_argument("--pitch", default=DEFAULT_PITCH, help='tom, ex.: "+2Hz"')
     parser.add_argument("--force", action="store_true", help="regera mesmo se o mp3 já existir")
     args = parser.parse_args()
 
@@ -74,13 +76,13 @@ async def main() -> None:
         voice = scene.get("voice") or script.get("voice") or args.voice
         spoken = aplicar_pronuncia(text)
         stamp = out.with_suffix(".txt")
-        signature = f"{voice}|{args.rate}|{spoken}"
+        signature = f"{voice}|{args.rate}|{args.pitch}|{spoken}"
         unchanged = stamp.exists() and stamp.read_text(encoding="utf-8") == signature
         if out.exists() and unchanged and not args.force:
             print(f"cena {i + 1}: sem mudanças, pulando (use --force para regerar)")
             continue
         print(f"cena {i + 1}: {voice}")
-        await synth(spoken, voice, args.rate, out)
+        await synth(spoken, voice, args.rate, args.pitch, out)
         stamp.write_text(signature, encoding="utf-8")
 
     print(f"Pronto: {out_dir}")
