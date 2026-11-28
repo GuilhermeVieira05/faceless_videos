@@ -1,0 +1,65 @@
+{
+	"id": "bug-bissexto-006",
+	"niche": "programacao",
+	"title": "Bug de produção #1: ano bissexto derrubou o Azure",
+	"revisar": "Confira os fatos no post-mortem oficial da Microsoft (Azure Team, 'Summary of Windows Azure Service Disruption on Feb 29th, 2012'): a causa foi o agente que gerava o certificado de transferência somando 1 ano à data e produzindo 29/02/2013; confirme a descrição ('derrubou o Azure', efeito 'máquinas não conseguiam se comunicar') e o escopo/duração antes de postar, pois a narração simplifica. O código é Python e é uma reconstrução didática do erro, não o código real da Microsoft; o ValueError foi testado no Python 3. relativedelta exige 'pip install python-dateutil' e devolve 28/02/2013 (testado). Se tiver um bug de data seu, troque pelo gancho.",
+	"scenes": [
+		{
+			"type": "hook",
+			"tag": "Bug de produção #1",
+			"title": "Um *ano bissexto* derrubou o Azure",
+			"subtitle": "29 de fevereiro de 2012.",
+			"narration": "Em 29 de fevereiro de 2012, um bug de ano bissexto derrubou o Azure da Microsoft. A causa cabe em uma linha de código."
+		},
+		{
+			"type": "code",
+			"label": "Bug",
+			"tone": "bad",
+			"filename": "certificado.py",
+			"code": "hoje = date(2012, 2, 29)\nvalidade = hoje.replace(\n  year=hoje.year + 1\n)",
+			"highlight": [
+				2,
+				3
+			],
+			"narration": "O sistema criava um certificado válido por um ano: o mesmo dia, ano seguinte. Só que 29 de fevereiro de 2013 não existe."
+		},
+		{
+			"type": "code",
+			"label": "Erro",
+			"tone": "bad",
+			"filename": "terminal",
+			"code": "ValueError: day is out of range\n  for month",
+			"highlight": [
+				1
+			],
+			"narration": "A conta estoura. Sem certificado, as máquinas não conseguiam se comunicar, e o problema se espalhou."
+		},
+		{
+			"type": "code",
+			"label": "Correção",
+			"tone": "good",
+			"filename": "certificado.py",
+			"code": "# pip install python-dateutil\nvalidade = hoje + relativedelta(\n  years=1\n)",
+			"highlight": [
+				2,
+				3
+			],
+			"narration": "Use uma biblioteca de datas que conhece o calendário. O relativedelta, do dateutil, transforma 29 de fevereiro em 28 de fevereiro do ano seguinte."
+		},
+		{
+			"type": "bullets",
+			"title": "Datas *quebram* em produção",
+			"points": [
+				"Nunca some ano ou mês *na mão*",
+				"Teste *29 de fevereiro* e *31 de dezembro*",
+				"Use *biblioteca* de datas, não string"
+			],
+			"narration": "Nunca some ano ou mês na mão. Teste 29 de fevereiro e 31 de dezembro. E use uma biblioteca de datas."
+		},
+		{
+			"type": "outro",
+			"title": "Segue pra mais *Bug de produção*",
+			"narration": "Segue pra mais Bug de produção."
+		}
+	]
+}

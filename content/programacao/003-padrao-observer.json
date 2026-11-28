@@ -2,14 +2,14 @@
 	"id": "observer-003",
 	"niche": "programacao",
 	"title": "Padrão de projeto Observer",
-	"revisar": "Troque Order/emailService por um caso real seu (notificação, evento de domínio, WebSocket). Se você já refatorou um código acoplado assim, conte isso no hook.",
+	"revisar": "Gancho reescrito em 2026-11-28 (consequência concreta). Cenário Order/emailService é ilustrativo: se você viveu isso de verdade (classe acoplada que quebrou ao adicionar um serviço), conte no gancho. Observer vs pub/sub: aqui é o Observer clássico (mesmo processo).",
 	"scenes": [
 		{
 			"type": "hook",
 			"tag": "Padrões de projeto",
-			"title": "Seu código chama *tudo* na mão?",
-			"subtitle": "Observer, em 30 segundos.",
-			"narration": "Todo pedido pago dispara e-mail, estoque e analytics, e a classe Order chama tudo na mão? Tem um padrão de projeto pra isso: o Observer."
+			"title": "Cada serviço novo mexia na classe *Order*",
+			"subtitle": "Observer resolve isso.",
+			"narration": "Todo serviço novo no pagamento exigia mexer na classe Order. E-mail, estoque, analytics: três chamadas na mão, três chances de quebrar o pedido. O Observer acaba com isso."
 		},
 		{
 			"type": "code",

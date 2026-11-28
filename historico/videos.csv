@@ -1,8 +1,9 @@
 id,nicho,tema,criado_em,status,postado_em,plataformas,link,views_7d,retencao,seguidores_ganhos,notas
 ts-any-001,programacao,Para de usar any no TypeScript,2026-11-23,render de teste (sem voz),,,,,,,Primeiro vídeo de teste do projeto
-js-promise-all-002,programacao,await em sequência vs Promise.all,2026-11-23,roteiro pronto,,,,,,,
-observer-003,programacao,Padrão de projeto Observer,2026-11-23,roteiro pronto,,,,,,,Trocar por caso real seu
-idempotencia-filas-004,programacao,Idempotência em filas,2026-11-23,roteiro pronto,,,,,,,Trocar por caso real seu
+js-promise-all-002,programacao,await em sequência vs Promise.all,2026-11-23,renderizado,,,,,,,Gancho reescrito em 2026-11-28
+observer-003,programacao,Padrão de projeto Observer,2026-11-23,renderizado,,,,,,,Trocar por caso real seu; gancho reescrito em 2026-11-28
+idempotencia-filas-004,programacao,Idempotência em filas,2026-11-23,postado,,,,,,,Trocar por caso real seu
+bug-bissexto-006,programacao,Bug de produção #1: ano bissexto derrubou o Azure,2026-11-28,renderizado,,,,,,,Conferir fatos no post-mortem da Microsoft
 ts-nullish-005,programacao,|| x ?? no TypeScript,2026-11-23,roteiro pronto,,,,,,,
 en-i-agree-001,ingles,I am agree x I agree,2026-11-23,roteiro pronto,,,,,,,Revisar frases no dicionário
 en-looking-forward-002,ingles,Estou ansioso: looking forward to,2026-11-23,roteiro pronto,,,,,,,Revisar frases no dicionário

@@ -1,4 +1,5 @@
 data,hora,plataforma,id,status
-2026-11-30,07:30,tiktok,idempotencia-filas-004,renderizado
-2026-11-30,12:30,tiktok,js-promise-all-002,roteiro pronto
-2026-11-30,19:30,tiktok,observer-003,roteiro pronto
+2026-11-28,19:30,tiktok,idempotencia-filas-004,postado
+2026-11-30,07:30,tiktok,bug-bissexto-006,renderizado
+2026-11-30,12:30,tiktok,js-promise-all-002,renderizado
+2026-11-30,19:30,tiktok,observer-003,renderizado

@@ -6,9 +6,9 @@
 		{
 			"type": "hook",
 			"tag": "JavaScript",
-			"title": "Seu código espera *3x mais* do que precisa",
-			"subtitle": "Olha esse erro comum com await.",
-			"narration": "Seu código pode estar esperando três vezes mais do que precisa. Olha esse erro comum com await."
+			"title": "Três chamadas de 1 s. Sua tela abre em *3 s*",
+			"subtitle": "Podia abrir em 1 segundo.",
+			"narration": "Três chamadas de um segundo cada, e a tela abre em três. Podia abrir em um. O culpado é o await em sequência."
 		},
 		{
 			"type": "code",
@@ -16,7 +16,11 @@
 			"tone": "bad",
 			"filename": "dashboard.ts",
 			"code": "const user = await getUser(id);\nconst orders = await getOrders(id);\nconst stats = await getStats(id);",
-			"highlight": [1, 2, 3],
+			"highlight": [
+				1,
+				2,
+				3
+			],
 			"narration": "Aqui cada chamada só começa quando a anterior termina. Se cada uma leva um segundo, são três segundos."
 		},
 		{
@@ -25,13 +29,19 @@
 			"tone": "good",
 			"filename": "dashboard.ts",
 			"code": "const [user, orders, stats] =\n  await Promise.all([\n    getUser(id),\n    getOrders(id),\n    getStats(id),\n  ]);",
-			"highlight": [2],
+			"highlight": [
+				2
+			],
 			"narration": "Com Promise.all, as três rodam ao mesmo tempo. O tempo total vira o da chamada mais lenta."
 		},
 		{
 			"type": "bullets",
 			"title": "Só tem *um cuidado*",
-			"points": ["As chamadas *não podem depender* uma da outra", "Se uma falha, o Promise.all *rejeita tudo*", "Precisa de cada resultado? Use *allSettled*"],
+			"points": [
+				"As chamadas *não podem depender* uma da outra",
+				"Se uma falha, o Promise.all *rejeita tudo*",
+				"Precisa de cada resultado? Use *allSettled*"
+			],
 			"narration": "Só funciona se as chamadas forem independentes. E se uma falhar, o Promise.all rejeita tudo. Quando precisar do resultado de cada uma, use allSettled."
 		},
 		{
@@ -40,5 +50,6 @@
 			"subtitle": "Uma dica por dia.",
 			"narration": "Segue pra mais dicas de JavaScript."
 		}
-	]
+	],
+	"revisar": "Gancho reescrito em 2026-11-28 (fato concreto). Troque por um caso seu real (tela/endpoint que você acelerou, com os tempos reais antes e depois). Confira que getUser/getOrders/getStats são independentes no seu exemplo. Narração do gancho ~5 s."
 }
