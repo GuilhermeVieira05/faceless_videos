@@ -2,7 +2,7 @@ import type {Theme} from '../../core/types';
 
 export const programacaoTheme: Theme = {
 	id: 'programacao',
-	handle: '@seu_canal_dev',
+	handle: '@bugdeproducao',
 	align: 'left',
 	bg: ['#070B17', '#0C1330', '#0A0F1E'],
 	glow: ['#22D3EE', '#8B5CF6'],

@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:1080px;height:1080px;overflow:hidden;background:#070B17}
+</style></head><body>
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#16204A"/>
+      <stop offset="0.55" stop-color="#0C1330"/>
+      <stop offset="1" stop-color="#070B17"/>
+    </radialGradient>
+    <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FB7185"/>
+      <stop offset="1" stop-color="#E11D48"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(148,163,255,0.07)" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#grid)"/>
+  <circle cx="540" cy="560" r="300" fill="#22D3EE" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="620" cy="480" r="220" fill="#8B5CF6" opacity="0.20" filter="url(#glow)"/>
+
+  <g transform="translate(540 560) scale(1.18) translate(-540 -560)">
+  <!-- legs as code brackets -->
+  <g stroke="#38BDF8" stroke-width="30" stroke-linecap="round" fill="none">
+    <path d="M330 470 L250 420"/><path d="M320 590 L220 590"/><path d="M335 710 L255 770"/>
+    <path d="M750 470 L830 420"/><path d="M760 590 L860 590"/><path d="M745 710 L825 770"/>
+  </g>
+  <!-- antennae -->
+  <g stroke="#A78BFA" stroke-width="22" stroke-linecap="round" fill="none">
+    <path d="M490 330 Q450 250 395 235"/><path d="M590 330 Q630 250 685 235"/>
+  </g>
+  <circle cx="392" cy="234" r="22" fill="#A78BFA"/><circle cx="688" cy="234" r="22" fill="#A78BFA"/>
+  <!-- body -->
+  <ellipse cx="540" cy="610" rx="215" ry="250" fill="url(#shell)" stroke="#F4F7FF" stroke-width="14"/>
+  <line x1="540" y1="365" x2="540" y2="855" stroke="#F4F7FF" stroke-width="12" opacity="0.9" transform="translate(0,0)"/>
+  <!-- spots as a "500" error code feel -->
+  <circle cx="455" cy="545" r="38" fill="#070B17" opacity="0.85"/>
+  <circle cx="625" cy="545" r="38" fill="#070B17" opacity="0.85"/>
+  <circle cx="470" cy="690" r="30" fill="#070B17" opacity="0.85"/>
+  <circle cx="610" cy="690" r="30" fill="#070B17" opacity="0.85"/>
+  <!-- head -->
+  <ellipse cx="540" cy="345" rx="120" ry="88" fill="#0E1630" stroke="#F4F7FF" stroke-width="14"/>
+  <circle cx="497" cy="338" r="18" fill="#F4F7FF"/><circle cx="583" cy="338" r="18" fill="#F4F7FF"/>
+  </g>
+</svg>
+</body></html>
